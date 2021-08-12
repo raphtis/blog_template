@@ -1,0 +1,11 @@
+body {
+    background-color: lightgrey;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Login & Registration</title>
+</head>
+    <body>
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-5">
+                    <h1>Registration</h1>
+                    {% if messages %}
+                    <ul class="messages">    
+                        {% for message in messages %}    
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <form  class="row" action='/register' method="POST">
+                        {% csrf_token %}
+                        <div class="col">
+                            <label for="first_name">First Name: <input type="text" name="first_name"</label>
+                        </div>
+                        <div class="col">
+                            <label for="last_name">Last Name: <input type="text" name="last_name"</label>
+                        </div>
+                        <div class="col">
+                            <label for="email">Email: <input type="text" name="email"</label>
+                        <label for="password">Password: <input type="password" name="password"</label>
+                        </div>
+                        <div class="col">
+                            <label for="confirm_password">Confirm Password: <input type="password" name="confirm_password"</label>
+                        </div>
+                        <input type="submit" value="Create Account">
+                    </form>
+                </div>
+
+                <div class="col-5">
+                    <h1>Login</h1>
+                    <form action="/login" method="POST">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label>Email:<input type="text" name="email"</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:<input type="password" name="password"</label>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

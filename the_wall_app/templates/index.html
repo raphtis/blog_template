@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="container">
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+            <p class="green">Successfully registered (or logged in)</p>
+            <form action="users/{{user.id}}/update" method="POST">
+                <h2>Edit {{user.first_name}} {{user.last_name}}</h2>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="first_name">First Name: <input type="text" name="first_name" value="{{user.first_name}}"</label>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name: <input type="text" name="last_name" value="{{user.last_name}}"</label>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: <input type="text" name="email" value="{{user.email}}"</label>
+                <label for="password">Password: <input type="password" name="password"</label>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password: <input type="password" name="confirm_password"</label>
+                </div>
+                <input type="submit" value="Update Profile">
+            </form>
+            <a href="/wall"><button>Go to The Wall</button></a>
+            <a href="/logout"><button>Logout</button</a>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

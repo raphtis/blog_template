@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>{{user.first_name}} {{user.last_name}} Account Page </h1>
+        <p>Email: {{user.email}}</p>
+        <br>
+        <h2>Messages posted by {{user.first_name}} {{user.last_name}}</h2>
+
+        {% for message in user.messages.all%}
+            <p>{{message.created_at}}</p>
+            <p>{{message.content}}</p>
+        {% endfor %}
+
+
+        <h2>Comments posted by {{user.first_name}} {{user.last_name}}</h2>
+        {% for comment in user.comments.all%}
+            <p>{{comment.content}}</p>
+            <p>{{comment.created_at}}</p>
+        {% endfor %}
+
+
+        <h2>Messages liked by {{user.first_name}}</h2>
+        {% for message in user.messages_user_liked.all%}
+            <p>{{message.created_at}}</p>
+            <p>{{message.content}}</p>
+        {% endfor %}
+
+        <a href="/wall"><button>Go back to The Wall</button></a>
+        <a href="/logout"><button>Logout</button</a>
+
+
+        <script src="" async defer></script>
+    </body>
+</html>
